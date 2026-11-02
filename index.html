@@ -13,10 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Outfit:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script>
       (function() {
-        var saved = localStorage.getItem('vibe_theme') || 'dark';
+        // La app guarda el tema como JSON ("\"dark\""): hay que parsearlo o el primer pintado sale sin tema
+        var saved = 'light';
+        try {
+          saved = JSON.parse(localStorage.getItem('vibe_theme')) === 'dark' ? 'dark' : 'light';
+        } catch (e) {}
         document.documentElement.setAttribute('data-theme', saved);
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', saved === 'dark' ? '#120c08' : '#fbf7f1');
+        if (meta) meta.setAttribute('content', saved === 'dark' ? '#17110d' : '#fbf7f1');
       })();
     </script>
   </head>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import confetti from 'canvas-confetti';
 import {
   ArrowDown,
@@ -32,6 +33,9 @@ import './App.css';
 
 const CONFETTI_COLORS = ['#A8531B', '#E2C29E', '#F4B860', '#2B8A3E', '#FFFFFF'];
 
+// Color de la barra del navegador en el celular (igual a --paper de cada tema)
+const THEME_COLOR = { light: '#fbf7f1', dark: '#17110d' };
+
 function load(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
@@ -53,7 +57,7 @@ export default function App() {
   const appRef = useRef(null);
   const piecesApi = useRef(null);
 
-  const [theme, setTheme] = useState(() => load('vibe_theme', 'dark'));
+  const [theme, setTheme] = useState(() => load('vibe_theme', 'light'));
   const [cafesServidos, setCafesServidos] = useState(() => Number(load('vibe_cafes_count', 0)) || 0);
   const [isBrewing, setIsBrewing] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
@@ -75,11 +79,35 @@ export default function App() {
     save('vibe_theme', theme);
     document.documentElement.setAttribute('data-theme', theme);
     const metaTheme = document.querySelector('meta[name="theme-color"]');
-    if (metaTheme) metaTheme.setAttribute('content', theme === 'dark' ? '#120c08' : '#fbf7f1');
+    if (metaTheme) metaTheme.setAttribute('content', THEME_COLOR[theme]);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((curr) => (curr === 'dark' ? 'light' : 'dark'));
+  // Cambiar de tema es encender o apagar la luz: el tema nuevo se abre en círculo desde el botón
+  const toggleTheme = (e) => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || reduce) {
+      setTheme(next);
+      return;
+    }
+    const rect = e?.currentTarget?.getBoundingClientRect();
+    const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+    const y = rect ? rect.top + rect.height / 2 : 0;
+    const r = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    const transition = document.startViewTransition(() => {
+      flushSync(() => setTheme(next));
+      document.documentElement.setAttribute('data-theme', next);
+    });
+    transition.ready
+      .then(() => {
+        document.documentElement.animate(
+          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+          { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', pseudoElement: '::view-transition-new(root)' },
+        );
+      })
+      .catch(() => {
+        // La transición se saltó (otra empezó antes): el tema ya quedó aplicado
+      });
   };
 
   useEffect(() => save('vibe_cafes_count', cafesServidos), [cafesServidos]);

@@ -160,18 +160,18 @@ export default function Nav({ activeSection, count, devtoolsOpen, onToggleDevtoo
               type="button"
               className="nav-theme-btn"
               onClick={onToggleTheme}
-              aria-label={theme === 'dark' ? 'Cambiar a Tema Claro (Original)' : 'Cambiar a Tema Oscuro'}
-              title={theme === 'dark' ? 'Cambiar a Tema Claro (Original)' : 'Cambiar a Tema Oscuro'}
+              aria-label={theme === 'dark' ? 'Ver la cafetería de día (tema claro)' : 'Ver la cafetería de noche (tema oscuro)'}
+              title={theme === 'dark' ? 'Ver la cafetería de día' : 'Ver la cafetería de noche'}
             >
               {theme === 'dark' ? (
                 <>
                   <Sun size={15} />
-                  <span className="theme-btn-label">Claro (Original)</span>
+                  <span className="theme-btn-label">De día</span>
                 </>
               ) : (
                 <>
                   <Moon size={15} />
-                  <span className="theme-btn-label">Oscuro</span>
+                  <span className="theme-btn-label">De noche</span>
                 </>
               )}
             </button>
@@ -221,7 +221,7 @@ export default function Nav({ activeSection, count, devtoolsOpen, onToggleDevtoo
               onClick={onToggleTheme}
             >
               {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
-              {theme === 'dark' ? 'Tema Claro (Original)' : 'Tema Oscuro'}
+              {theme === 'dark' ? 'Cafetería de día' : 'Cafetería de noche'}
             </button>
             <button
               type="button"

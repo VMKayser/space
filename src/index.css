@@ -32,6 +32,27 @@
   --vercel: #2b8a3e;
   --vercel-soft: #e3f4e6;
 
+  /* Texto sobre un relleno de acento o de pieza */
+  --on-accent: #fff;
+
+  /* Vidrio de la barra y fichas sobre ella */
+  --glass: rgba(255, 252, 247, 0.72);
+  --glass-solid: rgba(255, 252, 247, 0.9);
+  --glass-edge: rgba(213, 196, 175, 0.55);
+  --glass-shine: rgba(255, 255, 255, 0.7);
+  --chip: rgba(255, 255, 255, 0.6);
+
+  /* Luz ambiente de la portada */
+  --lamp-1: rgba(249, 205, 160, 0.7);
+  --lamp-2: rgba(238, 206, 176, 0.75);
+  --wash-1: #fbe2c8;
+  --wash-2: #f3e3d0;
+
+  --mark-alt: #ecd3b9;
+  --stain: #8c5a36;
+  --ok-ink: #1e6b30;
+  --ok-line: #bfe3c6;
+
   --radius-sm: 10px;
   --radius: 18px;
   --radius-lg: 28px;
@@ -49,38 +70,57 @@
 [data-theme='dark'] {
   color-scheme: dark;
 
-  /* Café espresso y crema: paleta profunda de cafetería nocturna */
-  --paper: #120c08;
-  --paper-2: #1b120c;
-  --paper-3: #261a12;
-  --card: #1e150f;
-  --ink: #fcf6ee;
-  --ink-2: #cfbdae;
-  --ink-3: #9e8a7c;
-  --line: rgba(245, 230, 215, 0.12);
-  --line-strong: rgba(245, 230, 215, 0.24);
+  /* La cafetería de noche: madera tostada, luz de lámpara y espuma de leche */
+  --paper: #17110d;
+  --paper-2: #1e1712;
+  --paper-3: #2a211a;
+  --card: #241c16;
+  --ink: #f3e7d9;
+  --ink-2: #cbb9a6;
+  --ink-3: #988472;
+  --line: rgba(243, 223, 200, 0.1);
+  --line-strong: rgba(243, 223, 200, 0.2);
 
-  /* Caramelo dorado y ámbar para destacar sobre el grano tostado */
-  --accent: #f59e0b;
-  --accent-strong: #fbbf24;
-  --accent-soft: rgba(245, 158, 11, 0.16);
+  /* El mismo caramelo, iluminado por la lámpara */
+  --accent: #e2995e;
+  --accent-strong: #f0b583;
+  --accent-soft: rgba(226, 153, 94, 0.15);
 
-  /* Un color por pieza adaptado para modo oscuro con alto contraste */
-  --html: #fb923c;
-  --html-soft: rgba(251, 146, 60, 0.16);
-  --css: #38bdf8;
-  --css-soft: rgba(56, 189, 248, 0.16);
-  --react: #22d3ee;
-  --react-soft: rgba(34, 211, 238, 0.16);
-  --storage: #c084fc;
-  --storage-soft: rgba(192, 132, 252, 0.16);
-  --github: #e2e8f0;
-  --github-soft: rgba(226, 232, 240, 0.14);
-  --vercel: #4ade80;
-  --vercel-soft: rgba(74, 222, 128, 0.16);
+  /* Un color por pieza: esmaltes de taza, cálidos y sin neón */
+  --html: #ef8c63;
+  --html-soft: rgba(239, 140, 99, 0.14);
+  --css: #8db8e8;
+  --css-soft: rgba(141, 184, 232, 0.14);
+  --react: #6fc6bd;
+  --react-soft: rgba(111, 198, 189, 0.14);
+  --storage: #b8a2ee;
+  --storage-soft: rgba(184, 162, 238, 0.15);
+  --github: #ddd2c6;
+  --github-soft: rgba(221, 210, 198, 0.12);
+  --vercel: #8fce8a;
+  --vercel-soft: rgba(143, 206, 138, 0.14);
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 20px 48px -10px rgba(0, 0, 0, 0.7);
+  --on-accent: #1c140f;
+
+  --glass: rgba(30, 23, 18, 0.72);
+  --glass-solid: rgba(30, 23, 18, 0.92);
+  --glass-edge: rgba(243, 223, 200, 0.12);
+  --glass-shine: rgba(255, 236, 214, 0.06);
+  --chip: rgba(243, 223, 200, 0.05);
+
+  /* Lámparas encendidas en vez de luz de mañana */
+  --lamp-1: rgba(214, 122, 56, 0.26);
+  --lamp-2: rgba(150, 72, 30, 0.32);
+  --wash-1: rgba(226, 153, 94, 0.14);
+  --wash-2: rgba(168, 83, 27, 0.16);
+
+  --mark-alt: rgba(226, 153, 94, 0.2);
+  --stain: #c08452;
+  --ok-ink: #a8dca3;
+  --ok-line: rgba(143, 206, 138, 0.3);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 22px 44px -14px rgba(0, 0, 0, 0.6);
 }
 
 *,
